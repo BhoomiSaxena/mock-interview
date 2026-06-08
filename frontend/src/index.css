@@ -1,0 +1,54 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html,
+  body,
+  #root {
+    height: 100%;
+  }
+
+  body {
+    @apply bg-slate-950 text-slate-100 antialiased;
+  }
+}
+
+@layer components {
+  .glass {
+    @apply rounded-2xl border border-white/10 bg-white/10 backdrop-blur-xl;
+    @apply shadow-lg;
+    @apply transition-shadow duration-200 ease-out;
+    @apply ring-1 ring-white/10;
+  }
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl px-4 py-2 text-sm font-medium;
+    @apply transition-colors transition-transform duration-200 ease-out;
+    @apply will-change-transform;
+    @apply bg-white/10 hover:bg-white/15 active:bg-white/10;
+    @apply border border-white/10;
+    @apply hover:translate-y-[-1px] active:translate-y-[0px];
+  }
+  .btn-primary {
+    @apply relative overflow-hidden;
+    @apply bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-600 hover:from-blue-400 hover:via-indigo-400 hover:to-purple-500;
+    @apply border-transparent;
+    @apply shadow-lg;
+  }
+  .btn-primary::before {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.35), rgba(255,255,255,0.0) 45%);
+    opacity: 0.0;
+    transition: opacity 200ms ease;
+  }
+  .btn-primary:hover::before {
+    opacity: 0.9;
+  }
+  .input {
+    @apply w-full rounded-xl border border-white/10 bg-slate-950/40 px-3 py-2 text-sm outline-none;
+    @apply transition-colors duration-200 ease-out;
+    @apply focus:border-indigo-400/50 focus:ring-2 focus:ring-indigo-400/20;
+  }
+}
